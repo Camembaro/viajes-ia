@@ -43,7 +43,7 @@ export default function ViajesIAPortada() {
       {/* Sección principal */}
       <section className="relative pt-28 pb-16 px-4 overflow-hidden">
         {/* IMAGEN DE FONDO CON MAYOR OPACIDAD AHORA */}
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?fit=crop&w=1920&q=80')] bg-cover bg-center opacity-30"></div> {/* <-- Cambiado de opacity-20 a opacity-30 */}
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?fit=crop&w=1920&q=80')] bg-cover bg-center opacity-30"></div>
         <div className="relative z-10 max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center">
           <div className="space-y-6">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
@@ -86,7 +86,7 @@ export default function ViajesIAPortada() {
               {/* CAMPO DE FECHA CON COLOR DE TEXTO MEJORADO */}
               <input 
                 type="date" 
-                className="w-full px-4 py-2.5 rounded-lg bg-slate-800 border border-slate-600 focus:outline-none focus:border-blue-500 text-slate-200 transition" {/* <-- text-slate-300 a text-slate-200 para mayor contraste */}
+                className="w-full px-4 py-2.5 rounded-lg bg-slate-800 border border-slate-600 focus:outline-none focus:border-blue-500 text-slate-200 transition" 
                 defaultValue={getTodayDate()} 
                 required 
               />
@@ -111,7 +111,7 @@ export default function ViajesIAPortada() {
 
               {/* Mensaje de respuesta de la IA - ESTILO MEJORADO */}
               {iaResponse && (
-                <div className={`mt-4 p-4 rounded-lg text-base font-semibold text-center ${isLoading ? 'bg-blue-700 animate-pulse' : 'bg-green-600'}`}> {/* <-- Estilo mejorado */}
+                <div className={`mt-4 p-4 rounded-lg text-base font-semibold text-center ${isLoading ? 'bg-blue-700 animate-pulse' : 'bg-green-600'}`}>
                   {iaResponse}
                 </div>
               )}
@@ -143,9 +143,9 @@ export default function ViajesIAPortada() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-5">
           {/* Tarjeta de Cancún */}
-          <div className="rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300 relative group"> {/* <-- Añadido grupo y efectos */}
+          <div className="rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300 relative group">
             <img src="https://images.unsplash.com/photo-1552074284-5e88ef1aef18?fit=crop&w=600&q=80" alt="Cancún" className="w-full h-44 object-cover" />
-            <div className="p-3 bg-slate-900 absolute bottom-0 left-0 right-0 bg-opacity-80 backdrop-blur-sm group-hover:bg-opacity-95 transition-all duration-300"> {/* <-- Efecto blur y opacidad */}
+            <div className="p-3 bg-slate-900 absolute bottom-0 left-0 right-0 bg-opacity-80 backdrop-blur-sm group-hover:bg-opacity-95 transition-all duration-300">
               <h3 className="font-bold">Cancún</h3>
               <p className="text-xs text-slate-400">México 🏖️ Playa</p>
             </div>
@@ -197,4 +197,13 @@ export default function ViajesIAPortada() {
             <p className="text-xs">Planes a tu medida y presupuesto</p>
           </div>
           <div className="space-y-2">
-            <p className="text-2xl text-blue-400
+            <p className="text-2xl text-blue-400">✅</p>
+            <p className="text-xs">Reserva segura 100% garantizada</p>
+          </div>
+          <div className="space-y-2">
+            <p className="text-2xl text-blue-400">⭐</p>
+            <p className="text-xs">Experiencias inolvidables</p>
+          </div>
+        </div>
+      
+
