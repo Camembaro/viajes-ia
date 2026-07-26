@@ -1,7 +1,3 @@
-
-
-
-
 'use client'
 import Link from 'next/link'
 import { useState } from 'react';
@@ -46,7 +42,6 @@ export default function ViajesIAPortada() {
 
       {/* Sección principal */}
       <section className="relative pt-28 pb-16 px-4 overflow-hidden">
-        {/* IMAGEN DE FONDO CON MAYOR OPACIDAD AHORA */}
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?fit=crop&w=1920&q=80')] bg-cover bg-center opacity-30"></div>
         <div className="relative z-10 max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center">
           <div className="space-y-6">
@@ -87,7 +82,6 @@ export default function ViajesIAPortada() {
               
               <input type="text" placeholder="¿A dónde quieres ir? (Ej: Cancún, Europa, Pirámides)" className="w-full px-4 py-2.5 rounded-lg bg-slate-800 border border-slate-600 focus:outline-none focus:border-blue-500 transition" required />
               
-              {/* CAMPO DE FECHA CON COLOR DE TEXTO MEJORADO */}
               <input 
                 type="date" 
                 className="w-full px-4 py-2.5 rounded-lg bg-slate-800 border border-slate-600 focus:outline-none focus:border-blue-500 text-slate-200 transition" 
@@ -95,7 +89,6 @@ export default function ViajesIAPortada() {
                 required 
               />
               
-              {/* CAMPOS: Personas y Noches */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label htmlFor="numPersonas" className="block text-sm font-medium text-slate-300 mb-1">Nº de personas</label>
@@ -113,7 +106,6 @@ export default function ViajesIAPortada() {
                 {isLoading ? 'Procesando...' : '📩 Recibir cotización personalizada'}
               </button>
 
-              {/* Mensaje de respuesta de la IA - ESTILO MEJORADO */}
               {iaResponse && (
                 <div className={`mt-4 p-4 rounded-lg text-base font-semibold text-center ${isLoading ? 'bg-blue-700 animate-pulse' : 'bg-green-600'}`}>
                   {iaResponse}
@@ -124,7 +116,7 @@ export default function ViajesIAPortada() {
         </div>
       </section>
 
-      {/* ALIANZAS COMPLETAS */}
+      {/* Alianzas */}
       <section className="bg-slate-950 py-6 px-4">
         <p className="text-center text-slate-400 text-sm mb-4">Trabajamos con las mejores agencias de viaje</p>
         <div className="flex flex-wrap justify-center gap-4 md:gap-6 text-slate-300 font-medium text-sm md:text-base">
@@ -138,15 +130,13 @@ export default function ViajesIAPortada() {
         </div>
       </section>
 
-      {/* DESTINOS - EFECTOS DE HOVER AÑADIDOS */}
+      {/* Destinos */}
       <section className="max-w-7xl mx-auto px-4 py-14">
         <div className="text-center mb-10">
           <h2 className="text-2xl md:text-3xl font-bold mb-2">Encuentra tu próxima aventura</h2>
           <p className="text-slate-400">Los destinos más increíbles te esperan</p>
         </div>
-
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-5">
-          {/* Tarjeta de Cancún */}
           <div className="rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300 relative group">
             <img src="https://images.unsplash.com/photo-1552074284-5e88ef1aef18?fit=crop&w=600&q=80" alt="Cancún" className="w-full h-44 object-cover" />
             <div className="p-3 bg-slate-900 absolute bottom-0 left-0 right-0 bg-opacity-80 backdrop-blur-sm group-hover:bg-opacity-95 transition-all duration-300">
@@ -154,7 +144,6 @@ export default function ViajesIAPortada() {
               <p className="text-xs text-slate-400">México 🏖️ Playa</p>
             </div>
           </div>
-          {/* Tarjeta de Europa */}
           <div className="rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300 relative group">
             <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?fit=crop&w=600&q=80" alt="Europa" className="w-full h-44 object-cover" />
             <div className="p-3 bg-slate-900 absolute bottom-0 left-0 right-0 bg-opacity-80 backdrop-blur-sm group-hover:bg-opacity-95 transition-all duration-300">
@@ -162,7 +151,6 @@ export default function ViajesIAPortada() {
               <p className="text-xs text-slate-400">Multidestinos 🏛️ Cultural</p>
             </div>
           </div>
-          {/* Tarjeta de Pirámides */}
           <div className="rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300 relative group">
             <img src="https://images.unsplash.com/photo-1551590393-61c2729d34?fit=crop&w=600&q=80" alt="Pirámides" className="w-full h-44 object-cover" />
             <div className="p-3 bg-slate-900 absolute bottom-0 left-0 right-0 bg-opacity-80 backdrop-blur-sm group-hover:bg-opacity-95 transition-all duration-300">
@@ -170,7 +158,6 @@ export default function ViajesIAPortada() {
               <p className="text-xs text-slate-400">México 🗿 Tradición</p>
             </div>
           </div>
-          {/* Tarjeta de Nueva York */}
           <div className="rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300 relative group">
             <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?fit=crop&w=600&q=80" alt="Nueva York" className="w-full h-44 object-cover" />
             <div className="p-3 bg-slate-900 absolute bottom-0 left-0 right-0 bg-opacity-80 backdrop-blur-sm group-hover:bg-opacity-95 transition-all duration-300">
@@ -178,7 +165,6 @@ export default function ViajesIAPortada() {
               <p className="text-xs text-slate-400">EE.UU. 🏙️ Ciudad</p>
             </div>
           </div>
-          {/* Tarjeta de Cruceros */}
           <div className="rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300 relative group">
             <img src="https://images.unsplash.com/photo-1567605934817-6c5e771b3812?fit=crop&w=600&q=80" alt="Cruceros" className="w-full h-44 object-cover" />
             <div className="p-3 bg-slate-900 absolute bottom-0 left-0 right-0 bg-opacity-80 backdrop-blur-sm group-hover:bg-opacity-95 transition-all duration-300">
@@ -211,6 +197,16 @@ export default function ViajesIAPortada() {
         </div>
       </section>
 
-      {/* Botón FLOTANTE DE WHATSAPP con emoji */}
+      {/* Botón WhatsApp COMPLETO Y CERRADO */}
       <a
-        href={`https://wa.me/${whatsappNumber}?text=¡Hola!%2
+        href={`https://wa.me/${whatsappNumber}?text=Hola!%20Me%20interesa%20recibir%20informacion%20y%20cotizaciones%20de%20viajes.`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg text-2xl z-50 hover:bg-green-600 transition-colors"
+        aria-label="Contactar por WhatsApp"
+      >
+        💬
+      </a>
+    </main>
+  );
+}
