@@ -210,5 +210,6 @@ export default function ViajesIAPortada() {
         aria-label="Contactar por WhatsApp"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.5 3.42 1.46 4.91l-1.5 5.48 5.61-1.46c1.45.79 3.
+          <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.5 3.42 1.46 4.91l-1.5 5.48 5.61-1.46c1.45.79 3.08 1.21 4.34 1.21 5.47 0 9.92
+
 
