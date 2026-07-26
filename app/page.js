@@ -12,7 +12,7 @@ export default function ViajesIAPortada() {
   };
 
   // ✅ TU NÚMERO DE WHATSAPP AQUÍ (CORRECTO)
-  const whatsappNumber = "52236106938";
+  const whatsappNumber = "522361106938";
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 text-white font-sans">
