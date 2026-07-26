@@ -12,7 +12,7 @@ export default function ViajesIAPortada() {
     return `${year}-${month}-${day}`;
   };
 
-  // ✅ TU NÚMERO DE WHATSAPP AQUÍ (¡AHORA SÍ, EL CORRECTO!)
+  // ✅ TU NÚMERO DE WHATSAPP AQUÍ
   const whatsappNumber = "522361106938"; 
 
   // Estado para manejar el mensaje de la IA
@@ -96,13 +96,19 @@ export default function ViajesIAPortada() {
                 required 
               />
               
-              {/* NUEVOS CAMPOS: Personas y Noches */}
-              <div className="grid grid-cols-2 gap-3">
-                <input type="number" min="1" placeholder="Nº de personas" className="w-full px-4 py-2.5 rounded-lg bg-slate-800 border border-slate-600 focus:outline-none focus:border-blue-500 transition" required />
-                <input type="number" min="1" placeholder="Nº de noches" className="w-full px-4 py-2.5 rounded-lg bg-slate-800 border border-slate-600 focus:outline-none focus:border-blue-500 transition" required />
+              {/* NUEVOS CAMPOS: Personas y Noches (¡AHORA SÍ CON TEXTO CLARO!) */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label htmlFor="numPersonas" className="block text-sm font-medium text-slate-300 mb-1">Nº de personas</label>
+                  <input id="numPersonas" type="number" min="1" defaultValue="1" className="w-full px-4 py-2.5 rounded-lg bg-slate-800 border border-slate-600 focus:outline-none focus:border-blue-500 transition" required />
+                </div>
+                <div>
+                  <label htmlFor="numNoches" className="block text-sm font-medium text-slate-300 mb-1">Nº de noches</label>
+                  <input id="numNoches" type="number" min="1" defaultValue="3" className="w-full px-4 py-2.5 rounded-lg bg-slate-800 border border-slate-600 focus:outline-none focus:border-blue-500 transition" required />
+                </div>
               </div>
 
-              <input type="text" placeholder="Presupuesto aproximado" className="w-full px-4 py-2.5 rounded-lg bg-slate-800 border border-slate-600 focus:outline-none focus:border-blue-500 transition" />
+              <input type="text" placeholder="Presupuesto aproximado (opcional)" className="w-full px-4 py-2.5 rounded-lg bg-slate-800 border border-slate-600 focus:outline-none focus:border-blue-500 transition" />
 
               <button type="submit" className="w-full py-3 bg-blue-600 hover:bg-blue-500 rounded-lg font-semibold transition-all duration-200 mt-2" disabled={isLoading}>
                 {isLoading ? 'Procesando...' : '📩 Recibir cotización personalizada'}
@@ -201,7 +207,7 @@ export default function ViajesIAPortada() {
         </div>
       </section>
 
-      {/* Botón FLOTANTE DE WHATSAPP ✅ LISTO Y CORREGIDO */}
+      {/* Botón FLOTANTE DE WHATSAPP con emoji */}
       <a
         href={`https://wa.me/${whatsappNumber}?text=¡Hola!%20Me%20interesa%20obtener%20más%20información%20sobre%20viajes%20y%20cotizaciones%20de%20ViajesIA.`}
         target="_blank"
@@ -209,7 +215,8 @@ export default function ViajesIAPortada() {
         className="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg flex items-center justify-center text-2xl z-50 hover:bg-green-600 transition-colors"
         aria-label="Contactar por WhatsApp"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.5 3.42 1.46 4.91l-1.5 5.48 5.61-1.46c1.45.79 3.08 1.21 4.34 1.21 5.47 0 9.92
-
-
+        💬
+      </a>
+    </main>
+  )
+}
