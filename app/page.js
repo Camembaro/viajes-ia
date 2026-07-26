@@ -12,7 +12,8 @@ export default function ViajesIAPortada() {
     return `${year}-${month}-${day}`;
   };
 
-  const whatsappNumber = "52236106938"; // Tu número de WhatsApp con código de país.
+  // ✅ TU NÚMERO DE WHATSAPP AQUÍ (¡AHORA SÍ, EL CORRECTO!)
+  const whatsappNumber = "522361106938"; 
 
   // Estado para manejar el mensaje de la IA
   const [iaResponse, setIaResponse] = useState('');
@@ -28,7 +29,7 @@ export default function ViajesIAPortada() {
     setTimeout(() => {
       setIaResponse('¡Tu cotización personalizada estará lista pronto! Un asesor se pondrá en contacto contigo.');
       setIsLoading(false);
-      e.target.reset(); // Opcional: limpiar el formulario después de enviar
+      //e.target.reset(); // Opcional: limpiar el formulario después de enviar, lo comento para que veas el mensaje.
     }, 3000); // Simula 3 segundos de procesamiento de la IA
   };
 
@@ -200,7 +201,7 @@ export default function ViajesIAPortada() {
         </div>
       </section>
 
-      {/* Botón FLOTANTE DE WHATSAPP */}
+      {/* Botón FLOTANTE DE WHATSAPP ✅ LISTO Y CORREGIDO */}
       <a
         href={`https://wa.me/${whatsappNumber}?text=¡Hola!%20Me%20interesa%20obtener%20más%20información%20sobre%20viajes%20y%20cotizaciones%20de%20ViajesIA.`}
         target="_blank"
@@ -209,4 +210,5 @@ export default function ViajesIAPortada() {
         aria-label="Contactar por WhatsApp"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.5 3.42 1.46 4.91l-1.
+          <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.5 3.42 1.46 4.91l-1.5 5.48 5.61-1.46c1.45.79 3.
+
