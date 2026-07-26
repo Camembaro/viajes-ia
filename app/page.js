@@ -1,3 +1,7 @@
+
+
+
+
 'use client'
 import Link from 'next/link'
 import { useState } from 'react';
@@ -205,5 +209,8 @@ export default function ViajesIAPortada() {
             <p className="text-xs">Experiencias inolvidables</p>
           </div>
         </div>
-      
+      </section>
 
+      {/* Botón FLOTANTE DE WHATSAPP con emoji */}
+      <a
+        href={`https://wa.me/${whatsappNumber}?text=¡Hola!%2
