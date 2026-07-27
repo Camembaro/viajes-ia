@@ -16,4 +16,11 @@ export async function POST(req) {
       noches: datos.noches,
       presupuesto: datos.presupuesto,
       nombre: datos.nombre,
-     
+      telefono: datos.telefono
+    });
+    if(error) return Response.json({ok:false, error:error.message}, {status:500});
+    return Response.json({ok:true});
+  } catch {
+    return Response.json({ok:false}, {status:500});
+  }
+}
