@@ -1,15 +1,19 @@
-'use server'
 import { createClient } from '@supabase/supabase-js'
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-)
+import { NextResponse } from 'next/server'
 
 export async function POST(req) {
   try {
-    const datos = await req.json();
-    await supabase.from('solicitudes_cotizacion').insert({
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+    if (!supabaseUrl || !supabaseKey) {
+      return NextResponse.json({ ok: false, error: 'Falta configuración' }, { status: 500 })
+    }
+
+    const supabase = createClient(supabaseUrl, supabaseKey)
+    const datos = await req.json()
+
+    const { error } = await supabase.from('solicitudes_cotizacion').insert({
       destino: datos.destino,
       fecha: datos.fecha,
       personas: datos.personas,
@@ -17,9 +21,12 @@ export async function POST(req) {
       nombre: datos.nombre,
       telefono: datos.telefono,
       correo: datos.correo
-    });
-    return Response.json({ok:true});
-  } catch {
-    return Response.json({ok:false});
+    })
+
+    if (error) throw error
+    return NextResponse.json({ ok: true })
+  } catch (err) {
+    console.error(err)
+    return NextResponse.json({ ok: false }, { status: 500 })
   }
 }

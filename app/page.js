@@ -46,7 +46,7 @@ Muy pronto te envío la propuesta completa y detallada a tu WhatsApp ${form.tele
       <div className="fixed inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-blue-900/60 to-black/90 z-10"></div>
         <img 
-          src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=90" 
+src="/images/portada-viajesia.png"
           alt="Viajes profesionales" 
           className="w-full h-full object-cover"
         />
