@@ -1,143 +1,150 @@
 'use client'
 import { useState } from 'react';
 
-export default function PortadaViajesIA() {
+export default function ViajesIA() {
   const whatsapp = "522361106938";
-  const [datos, setDatos] = useState({
+  const [form, setForm] = useState({
     destino:'', fecha:'', personas:'', noches:'', presupuesto:'', nombre:'', telefono:''
   });
-  const [respuesta, setRespuesta] = useState('');
+  const [msg, setMsg] = useState('');
   const [cargando, setCargando] = useState(false);
 
   const enviar = async (e) => {
     e.preventDefault();
     setCargando(true);
-    setRespuesta('');
+    setMsg('');
     try {
       const res = await fetch('/api/guardar', {
-        method: 'POST',
-        headers: {'Content-Type':'application/json'},
-        body: JSON.stringify(datos)
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify(form)
       });
       if(res.ok){
-        setRespuesta(`✅ ¡Solicitud recibida con éxito, ${datos.nombre}!
+        setMsg(`✅ ¡Solicitud recibida, ${form.nombre}!
 
-Estoy investigando en este momento las mejores opciones disponibles para:
-🌍 Destino: ${datos.destino}
-📅 Fecha: ${datos.fecha}
-👥 Viajeros: ${datos.personas} personas
-🌙 Estancia: ${datos.noches} noches
-💵 Presupuesto aprox: $${datos.presupuesto || 'A consultar'}
+Estoy investigando en tiempo real las mejores opciones para:
+📍 ${form.destino}
+📅 Fecha: ${form.fecha}
+👥 ${form.personas} viajeros — ${form.noches} noches
+💵 Presupuesto: $${form.presupuesto || 'A consultar'}
 
-Buscaré por ti:
-• Hoteles con la mejor ubicación y calificación
-• Vuelos y horarios más convenientes
-• Traslados y actividades incluidas
-• Precios reales y actualizados de agencias certificadas
-
-En muy poco tiempo te envío la propuesta completa a tu WhatsApp ${datos.telefono}, armada especialmente para ti.`);
-        setDatos({destino:'', fecha:'', personas:'', noches:'', presupuesto:'', nombre:'', telefono:''});
-      } else {
-        setRespuesta('⚠️ Error al guardar, intenta de nuevo.');
+Buscaré hoteles calificados, vuelos convenientes y precios reales de agencias certificadas.
+Muy pronto te envío la propuesta completa a tu WhatsApp ${form.telefono}.`);
+        setForm({destino:'', fecha:'', personas:'', noches:'', presupuesto:'', nombre:'', telefono:''});
+      }else{
+        setMsg('⚠️ Intenta nuevamente por favor.');
       }
-    } catch {
-      setRespuesta('⚠️ Error de conexión, intenta más tarde.');
+    }catch{
+      setMsg('⚠️ Revisa tu conexión y vuelve a intentar.');
     }
     setCargando(false);
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white">
-      <div className="absolute inset-0">
-  <img
-    src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=2000&q=80"
-    alt="Viajes"
-    className="w-full h-full object-cover"
-  />
-  <div className="absolute inset-0 bg-black/55"></div>
-</div>
-      <div className="relative z-10 max-w-2xl mx-auto p-4 md:p-8">
-        <header className="text-center mb-8 pt-6">
-          <h1 className="text-5xl md:text-6xl font-extrabold text-white drop-shadow-lg">
-✈️ ViajesIA
-</h1>
+    <main className="min-h-screen text-white">
+      {/* FONDO PROFESIONAL CON IMÁGENES DESTACADAS */}
+      <div className="fixed inset-0 z-0">
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-blue-900/50 to-black/80 z-10"></div>
+        <img 
+          src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=90" 
+          alt="Viajes y turismo" 
+          className="w-full h-full object-cover"
+        />
+      </div>
 
-<p className="text-2xl mt-4 text-cyan-300 font-semibold">
-Tu próximo viaje comienza aquí
-</p>
-
-<p className="mt-3 text-white/90 max-w-xl mx-auto">
-La Inteligencia Artificial analiza miles de opciones y nuestros expertos seleccionan las mejores propuestas para que disfrutes una experiencia inolvidable.
-</p>
+      <div className="relative z-20 max-w-xl mx-auto p-4 py-8">
+        <header className="text-center mb-8">
+          <h1 className="text-5xl md:text-6xl font-extrabold tracking-wide text-cyan-300 drop-shadow-lg">ViajesIA</h1>
+          <p className="text-xl md:text-2xl mt-3 text-blue-100 font-light">Tu viaje de ensueño, diseñado a la medida</p>
           
+          {/* IMÁGENES DESTACADAS ABAJO DEL TÍTULO */}
+          <div className="grid grid-cols-3 gap-2 mt-6">
+            <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Cancún" className="rounded-xl h-24 w-full object-cover shadow-lg border border-white/20"/>
+            <img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Pirámides" className="rounded-xl h-24 w-full object-cover shadow-lg border border-white/20"/>
+            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Montañas" className="rounded-xl h-24 w-full object-cover shadow-lg border border-white/20"/>
+          </div>
         </header>
 
-        <form onSubmit={enviar} className="bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white/20">
+        <form onSubmit={enviar} className="bg-black/40 backdrop-blur-xl rounded-3xl p-6 shadow-2xl border border-cyan-500/30">
           <div className="space-y-4">
             <div>
-              <label className="block mb-1 font-medium">¿A dónde quieres viajar?</label>
-              <input type="text" required value={datos.destino} onChange={e=>setDatos({...datos, destino:e.target.value})}
-                className="w-full p-3 rounded-lg bg-white/20 border border-white/30 focus:outline-none focus:ring-2 focus:ring-cyan-400"
-                placeholder="Ej: Cancún, Chiapas, Riviera Maya..."/>
+              <label className="block mb-2 font-semibold text-cyan-200">¿A dónde sueñas viajar?</label>
+              <input type="text" required value={form.destino}
+                onChange={e=>setForm({...form, destino:e.target.value})}
+                className="w-full p-4 rounded-xl bg-white/10 border border-cyan-400/40 focus:outline-none focus:ring-2 focus:ring-cyan-400 text-lg"
+                placeholder="Ej: Cancún, Riviera Maya, París..."/>
             </div>
-            <div className="grid grid-cols-2 gap-3">
+
+            <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block mb-1 font-medium">Fecha de salida</label>
-                <input type="date" required value={datos.fecha} onChange={e=>setDatos({...datos, fecha:e.target.value})}
-                  className="w-full p-3 rounded-lg bg-white/20 border border-white/30 focus:outline-none focus:ring-2 focus:ring-cyan-400"/>
+                <label className="block mb-2 font-semibold text-cyan-200">Fecha de salida</label>
+                <input type="date" required value={form.fecha}
+                  onChange={e=>setForm({...form, fecha:e.target.value})}
+                  className="w-full p-4 rounded-xl bg-white/10 border border-cyan-400/40 focus:outline-none focus:ring-2 focus:ring-cyan-400 text-lg"/>
               </div>
               <div>
-                <label className="block mb-1 font-medium">Personas</label>
-                <input type="number" min="1" required value={datos.personas} onChange={e=>setDatos({...datos, personas:e.target.value})}
-                  className="w-full p-3 rounded-lg bg-white/20 border border-white/30 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                <label className="block mb-2 font-semibold text-cyan-200">Número de personas</label>
+                <input type="number" min="1" required value={form.personas}
+                  onChange={e=>setForm({...form, personas:e.target.value})}
+                  className="w-full p-4 rounded-xl bg-white/10 border border-cyan-400/40 focus:outline-none focus:ring-2 focus:ring-cyan-400 text-lg"
                   placeholder="2"/>
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-3">
+
+            <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block mb-1 font-medium">Noches</label>
-                <input type="number" min="1" required value={datos.noches} onChange={e=>setDatos({...datos, noches:e.target.value})}
-                  className="w-full p-3 rounded-lg bg-white/20 border border-white/30 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                <label className="block mb-2 font-semibold text-cyan-200">Noches de estancia</label>
+                <input type="number" min="1" required value={form.noches}
+                  onChange={e=>setForm({...form, noches:e.target.value})}
+                  className="w-full p-4 rounded-xl bg-white/10 border border-cyan-400/40 focus:outline-none focus:ring-2 focus:ring-cyan-400 text-lg"
                   placeholder="3"/>
               </div>
               <div>
-                <label className="block mb-1 font-medium">Presupuesto ($)</label>
-                <input type="text" value={datos.presupuesto} onChange={e=>setDatos({...datos, presupuesto:e.target.value})}
-                  className="w-full p-3 rounded-lg bg-white/20 border border-white/30 focus:outline-none focus:ring-2 focus:ring-cyan-400"
-                  placeholder="Ej: 15000"/>
+                <label className="block mb-2 font-semibold text-cyan-200">Tu presupuesto ($)</label>
+                <input type="text" value={form.presupuesto}
+                  onChange={e=>setForm({...form, presupuesto:e.target.value})}
+                  className="w-full p-4 rounded-xl bg-white/10 border border-cyan-400/40 focus:outline-none focus:ring-2 focus:ring-cyan-400 text-lg"
+                  placeholder="Ej: 25000"/>
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-3">
+
+            <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block mb-1 font-medium">Tu nombre</label>
-                <input type="text" required value={datos.nombre} onChange={e=>setDatos({...datos, nombre:e.target.value})}
-                  className="w-full p-3 rounded-lg bg-white/20 border border-white/30 focus:outline-none focus:ring-2 focus:ring-cyan-400"/>
+                <label className="block mb-2 font-semibold text-cyan-200">Tu nombre completo</label>
+                <input type="text" required value={form.nombre}
+                  onChange={e=>setForm({...form, nombre:e.target.value})}
+                  className="w-full p-4 rounded-xl bg-white/10 border border-cyan-400/40 focus:outline-none focus:ring-2 focus:ring-cyan-400 text-lg"/>
               </div>
               <div>
-                <label className="block mb-1 font-medium">WhatsApp</label>
-                <input type="tel" required value={datos.telefono} onChange={e=>setDatos({...datos, telefono:e.target.value})}
-                  className="w-full p-3 rounded-lg bg-white/20 border border-white/30 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                <label className="block mb-2 font-semibold text-cyan-200">Tu WhatsApp</label>
+                <input type="tel" required value={form.telefono}
+                  onChange={e=>setForm({...form, telefono:e.target.value})}
+                  className="w-full p-4 rounded-xl bg-white/10 border border-cyan-400/40 focus:outline-none focus:ring-2 focus:ring-cyan-400 text-lg"
                   placeholder="+52 ..."/>
               </div>
             </div>
+
             <button type="submit" disabled={cargando}
-              className="w-full py-3 bg-cyan-600 hover:bg-cyan-500 rounded-lg font-bold text-lg transition-all disabled:opacity-50">
-              {cargando ? 'Consultando...' : 'Solicitar mi viaje'}
+              className="w-full py-4 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 rounded-xl font-bold text-xl shadow-lg transition-all disabled:opacity-60">
+              {cargando ? 'Buscando las mejores opciones...' : 'Solicitar mi viaje personalizado'}
             </button>
           </div>
         </form>
 
-        {respuesta && (
-          <div className="mt-6 p-5 bg-green-900/40 border border-green-400/30 rounded-xl whitespace-pre-line">
-            {respuesta}
+        {msg && (
+          <div className="mt-6 p-5 bg-green-900/50 border border-green-400/40 rounded-2xl whitespace-pre-line text-lg">
+            {msg}
           </div>
         )}
       </div>
 
-      <a href={`https://wa.me/${whatsapp}?text=Hola, quiero información de viajes`} target="_blank" rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-400 w-14 h-14 rounded-full flex items-center justify-center shadow-2xl z-50 transition-transform hover:scale-110">
-        <svg width="32" height="32" fill="white" viewBox="0 0 24 24">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.571-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      {/* BOTÓN FLOTANTE DE WHATSAPP */}
+      <a href={`https://wa.me/${whatsapp}?text=Hola ViajesIA, quiero información de viajes personalizados`}
+        target="_blank" rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-400 w-16 h-16 rounded-full flex items-center justify-center shadow-2xl z-50 transition-transform hover:scale-110">
+        <svg width="34" height="34" fill="white" viewBox="0 0 24 24">
+          <path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.57-.49-.5-.67-.51-.17 0-.37 0-.57 0-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35z"/>
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 2.1.55 4.14 1.59 5.95L0 24l6.3-1.65a11.88 11.88 0 005.7 1.45c6.63 0 12-5.37 12-12S18.63 0 12 0z"/>
         </svg>
       </a>
     </main>
