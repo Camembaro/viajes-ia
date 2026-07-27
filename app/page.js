@@ -20,13 +20,22 @@ export default function PortadaViajesIA() {
         body: JSON.stringify(datos)
       });
       if(res.ok){
-        setRespuesta(`✅ ¡Solicitud recibida, ${datos.nombre}!
-He preparado las mejores opciones para ${datos.destino}:
-• ${datos.personas} personas por ${datos.noches} noches
-• Fecha: ${datos.fecha}
-• Presupuesto aprox: $${datos.presupuesto || 'No indicado'}
+        setRespuesta(`✅ ¡Solicitud recibida con éxito, ${datos.nombre}!
 
-Te contactaré al WhatsApp ${datos.telefono} con paquetes reales de hotelería, vuelos y traslados.`);
+Estoy investigando en este momento las mejores opciones disponibles para:
+🌍 Destino: ${datos.destino}
+📅 Fecha: ${datos.fecha}
+👥 Viajeros: ${datos.personas} personas
+🌙 Estancia: ${datos.noches} noches
+💵 Presupuesto aprox: $${datos.presupuesto || 'A consultar'}
+
+Buscaré por ti:
+• Hoteles con la mejor ubicación y calificación
+• Vuelos y horarios más convenientes
+• Traslados y actividades incluidas
+• Precios reales y actualizados de agencias certificadas
+
+En muy poco tiempo te envío la propuesta completa a tu WhatsApp ${datos.telefono}, armada especialmente para ti.`);
         setDatos({destino:'', fecha:'', personas:'', noches:'', presupuesto:'', nombre:'', telefono:''});
       } else {
         setRespuesta('⚠️ Error al guardar, intenta de nuevo.');
@@ -53,7 +62,7 @@ Te contactaré al WhatsApp ${datos.telefono} con paquetes reales de hotelería, 
               <label className="block mb-1 font-medium">¿A dónde quieres viajar?</label>
               <input type="text" required value={datos.destino} onChange={e=>setDatos({...datos, destino:e.target.value})}
                 className="w-full p-3 rounded-lg bg-white/20 border border-white/30 focus:outline-none focus:ring-2 focus:ring-cyan-400"
-                placeholder="Ej: Cancún, Chiapas, Riviera Maya, París..."/>
+                placeholder="Ej: Cancún, Chiapas, Riviera Maya..."/>
             </div>
             <div className="grid grid-cols-2 gap-3">
               <div>
@@ -119,4 +128,3 @@ Te contactaré al WhatsApp ${datos.telefono} con paquetes reales de hotelería, 
     </main>
   );
 }
-
