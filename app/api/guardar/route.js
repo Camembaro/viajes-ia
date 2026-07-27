@@ -9,18 +9,17 @@ const supabase = createClient(
 export async function POST(req) {
   try {
     const datos = await req.json();
-    const { error } = await supabase.from('solicitudes_cotizacion').insert({
+    await supabase.from('solicitudes_cotizacion').insert({
       destino: datos.destino,
       fecha: datos.fecha,
       personas: datos.personas,
-      noches: datos.noches,
-      presupuesto: datos.presupuesto,
+      dias: datos.dias,
       nombre: datos.nombre,
-      telefono: datos.telefono
+      telefono: datos.telefono,
+      correo: datos.correo
     });
-    if(error) return Response.json({ok:false, error:error.message}, {status:500});
     return Response.json({ok:true});
   } catch {
-    return Response.json({ok:false}, {status:500});
+    return Response.json({ok:false});
   }
 }
